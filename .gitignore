@@ -1,0 +1,5 @@
+.vs/
+Bin/
+Bin-Obj/
+*.user
+*gui.ini
