@@ -161,6 +161,10 @@
   <ItemGroup>
     <ClCompile Include="MainSrc\Application.cpp" />
     <ClCompile Include="MainSrc\glad.c" />
+    <ClCompile Include="Implementations\VertexBuffers.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Headers\VertexBuffers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,6 +2,7 @@
 
 #include "GLFW/glfw3.h"
 #include "glad/glad.h"
+#include "../Headers/VertexBuffers.h"
 
 
 
@@ -19,7 +20,7 @@ int main(int args,char** kargs)
 	//informing glfw window about the opengl version 4.5 to be used
 	//informing the we are using core profile for the opengl
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	//creating the window and checking whether the window is crteated successfully or not
@@ -59,6 +60,17 @@ int main(int args,char** kargs)
 			glViewport(0, 0, x, y);
 		});
 
+
+	float arr[] = {
+		0.0f, 0.5f,
+		-0.5f,0.f,
+		0.5f,0.f
+	};
+
+	VertexBuffers vb(sizeof(arr));
+	vb.setBufferAttribArrays(arr, 0, sizeof(arr), 0, sizeof(float) * 2, 2, GL_FLOAT);
+
+	
 	
 	//Loop which run until the window is manually closed or quit or any error occurs
 	//will check whether the window is closed are not
@@ -68,7 +80,9 @@ int main(int args,char** kargs)
 		glClearColor(0.5f, 0.3f, 0.9f, 1.0f);
 		//clear all the mentioned buffers with the provided values
 		glClear(GL_COLOR_BUFFER_BIT);
-
+		vb.bindArray();
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		vb.unbindArray();
 
 		//will swap the buffers front and back buffer after all the drawing is been done 
 		glfwSwapBuffers(window);
