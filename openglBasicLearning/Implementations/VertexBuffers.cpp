@@ -27,7 +27,7 @@ VertexBuffers::VertexBuffers(size_t bufferMemSize)
 
 
 //copy constructor. clears the current members and assgins new values
-VertexBuffers::VertexBuffers(const VertexBuffers& buffer)
+VertexBuffers::VertexBuffers(const VertexBuffers& buffer) noexcept
 {
 	this->clearBuffers();
 
@@ -38,7 +38,7 @@ VertexBuffers::VertexBuffers(const VertexBuffers& buffer)
 
 //move constructor. clears the current members and assgins new values
 //cutting of the existing ownership
-VertexBuffers::VertexBuffers(VertexBuffers&& buffer)
+VertexBuffers::VertexBuffers(VertexBuffers&& buffer) noexcept
 {
 	this->clearBuffers();
 
@@ -57,7 +57,7 @@ VertexBuffers::~VertexBuffers()
 	clearBuffers();
 }
 //copy operator. clears the current members and assgins new values
-VertexBuffers& VertexBuffers::operator=(const VertexBuffers& buffer)
+VertexBuffers& VertexBuffers::operator=(const VertexBuffers& buffer) noexcept
 {
 	if (&buffer != this)
 	{
@@ -71,7 +71,7 @@ VertexBuffers& VertexBuffers::operator=(const VertexBuffers& buffer)
 }
 //move operator. clears the current members and assgins new values
 //cutting of the existing ownership
-VertexBuffers& VertexBuffers::operator=(VertexBuffers&& buffer)
+VertexBuffers& VertexBuffers::operator=(VertexBuffers&& buffer) noexcept
 {
 	if (&buffer != this)
 	{
@@ -176,3 +176,5 @@ void VertexBuffers::unbindBuffer(GLenum target)
 {
 	glBindBuffer(target, 0);
 }
+
+int apple = 10;
